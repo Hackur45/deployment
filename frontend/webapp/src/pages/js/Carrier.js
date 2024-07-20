@@ -51,7 +51,7 @@ const StyledDiv = () => {
     setLoading(true); // Set loading to true when form is submitted
 
     try {
-      const response = await axios.post('/career', formData, {
+      const response = await axios.post('https://deployment-hmyx.onrender.com/career', formData, {
         headers: {
           'Content-Type': 'application/json',
         },

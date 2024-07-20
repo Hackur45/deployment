@@ -34,7 +34,7 @@ function Contact() {
     e.preventDefault();
     setLoading(true); // Set loading to true when form is submitted
     try {
-      const response = await axios.post('/contact', formData);
+      const response = await axios.post('https://deployment-hmyx.onrender.com/contact', formData);
       if (response.status === 200) {
         setPopupMessage('Your contact query is received');
         setShowPopup(true);
