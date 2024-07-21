@@ -1,19 +1,25 @@
 require('dotenv').config();
 const express = require('express');
+const cors = require('cors');
 const app = express();
-const db = require('./db')
 const bodyParser = require('body-parser');
 const nodemailer = require('nodemailer');
 
 // Models
-const {User} = require('./models/User');
+const { User } = require('./models/User');
 const Contact = require('./models/Contact');
 
 // Middleware
 app.use(bodyParser.json());
+app.use(cors({
+    origin: 'https://debttesting.netlify.app',
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+}));
+
+app.options('*', cors()); // Handle preflight requests
 
 const PORT = process.env.PORT || 3000;
-
 
 // Setup Nodemailer transporter
 const transporter = nodemailer.createTransport({
@@ -34,10 +40,9 @@ app.post('/career', async (req, res) => {
         if (!response) {
             return res.status(500).send({ error: 'Cannot save the data' });
         } else {
-            // Send email notification
             const mailOptions = {
                 from: process.env.EMAIL_USER,
-                to: process.env.EMAIL_RECIVER, // Replace with recipient email address
+                to: process.env.EMAIL_RECEIVER,
                 subject: 'New Career Application Received',
                 text: `You have a new career application:\n\nName: ${data.name}\nEmail: ${data.email}\nJob Role: ${data.jobRole}\nMobile: ${data.mobile}`
             };
@@ -58,10 +63,9 @@ app.post('/contact', async (req, res) => {
         const newRequest = new Contact(data);
         await newRequest.save();
 
-        // Send email notification
         const mailOptions = {
             from: process.env.EMAIL_USER,
-            to: process.env.EMAIL_RECIVER, // Replace with recipient email address
+            to: process.env.EMAIL_RECEIVER,
             subject: 'New Contact Form Submission',
             text: `You have a new contact form submission:\n\nName: ${data.name}\nPhone: ${data.mobile}\nEmail: ${data.email}\nMessage: ${data.message}`
         };
