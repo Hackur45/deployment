@@ -44,7 +44,7 @@ app.post('/career', async (req, res) => {
         } else {
             const mailOptions = {
                 from: process.env.EMAIL_USER,
-                to: process.env.EMAIL_RECEIVER,
+                to: process.env.EMAIL_RECIVER,
                 subject: 'New Career Application Received',
                 text: `You have a new career application:\n\nName: ${data.name}\nEmail: ${data.email}\nJob Role: ${data.jobRole}\nMobile: ${data.mobile}`
             };
