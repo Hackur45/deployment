@@ -12,9 +12,10 @@ const Contact = require('./models/Contact');
 // Middleware
 app.use(bodyParser.json());
 app.use(cors({
-    origin: 'https://debttesting.netlify.app',
+    origin: 'https://debttesting.netlify.app', // Allow requests from this origin
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization'],
+    credentials: true
 }));
 
 app.options('*', cors()); // Handle preflight requests
