@@ -56,6 +56,7 @@ const StyledDiv = () => {
           'Content-Type': 'application/json',
         },
       });
+      
       console.log('Success:', response.data);
       setPopupMessage('Application submitted successfully!');
       setShowPopup(true);
