@@ -1,6 +1,6 @@
 import React , {useEffect}from 'react';
 import img1 from '../../assets/online-business.png'
-import Cards from '../../components/js/Card' 
+import Cards from '../../components/js/card' 
 import { Container } from 'react-bootstrap';
 import AOS from 'aos';
 import 'aos/dist/aos.css';

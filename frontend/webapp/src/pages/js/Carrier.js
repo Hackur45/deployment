@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import '../css/carrier.css';
 import interviewImage from '../../assets/OnlineInterview.png';
-import Cards from '../../components/js/Card';
+import Cards from '../../components/js/card';
 import AOS from 'aos';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
