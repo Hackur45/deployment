@@ -58,7 +58,7 @@ app.post('/career', async (req, res) => {
     }
 });
 
-// Endpoint to handle contact form submissions
+// Endpoint to handle contact form submissionss
 app.post('/contact', async (req, res) => {
     try {
         const { name, mobile, email, message } = req.body;
@@ -72,7 +72,7 @@ app.post('/contact', async (req, res) => {
 
         const mailOptions = {
             from: process.env.EMAIL_USER,
-            to: process.env.EMAIL_RECEIVER,
+            to: process.env.EMAIL_RECIVER,
             subject: 'New Contact Form Submission',
             text: `Name: ${name}\nPhone: ${mobile}\nEmail: ${email}\nMessage: ${message}`
         };
